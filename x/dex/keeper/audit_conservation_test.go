@@ -239,6 +239,52 @@ func (s *ConservationSuite) dumpState() [4]string {
 	}
 }
 
+// holders returns every address holding a positive balance of denom.
+func (s *ConservationSuite) holders(denom string) map[string]math.Int {
+	out := make(map[string]math.Int)
+	s.App.BankKeeper.IterateAllBalances(s.Ctx, func(addr sdk.AccAddress, coin sdk.Coin) bool {
+		if coin.Denom == denom && !coin.Amount.IsZero() {
+			out[addr.String()] = coin.Amount
+		}
+		return false
+	})
+	return out
+}
+
+// nameOf annotates an address with the module name if it is a module account.
+func (s *ConservationSuite) nameOf(addr string) string {
+	a, err := sdk.AccAddressFromBech32(addr)
+	if err != nil {
+		return addr
+	}
+	for name, p := range s.App.AccountKeeper.GetModulePermissions() {
+		if p.GetAddress() != nil && p.GetAddress().Equals(a) {
+			return name
+		}
+	}
+	return addr
+}
+
+// diffHolders logs every address whose balance changed for a denom.
+func (s *ConservationSuite) diffHolders(denom string, before, after map[string]math.Int) string {
+	var sb strings.Builder
+	for addr, b := range before {
+		a, ok := after[addr]
+		if !ok {
+			a = math.ZeroInt()
+		}
+		if !b.Equal(a) {
+			fmt.Fprintf(&sb, "  %s(%s) %s -> %s (delta %s)\n", s.nameOf(addr), addr, b, a, a.Sub(b))
+		}
+	}
+	for addr, a := range after {
+		if _, ok := before[addr]; !ok && !a.IsZero() {
+			fmt.Fprintf(&sb, "  %s(%s) NEW holder %s\n", s.nameOf(addr), addr, a)
+		}
+	}
+	return sb.String()
+}
+
 func (s *ConservationSuite) dump(tag string) string {
 	var sb strings.Builder
 	fmt.Fprintf(&sb, "[%s] module A=%s B=%s\n", tag, s.modSupply("TokenA"), s.modSupply("TokenB"))
@@ -248,19 +294,35 @@ func (s *ConservationSuite) dump(tag string) string {
 	return sb.String()
 }
 
+// strayHolders lists every TokenA/TokenB holder that is neither one of the
+// fuzz actors nor the dex module account, i.e. who received the "vanished" value.
+func (s *ConservationSuite) strayHolders() string {
+	tracked := map[string]bool{s.modAddr().String(): true}
+	for _, a := range s.actors {
+		tracked[a.String()] = true
+	}
+	var sb strings.Builder
+	for _, denom := range []string{"TokenA", "TokenB"} {
+		for addr, amt := range s.holders(denom) {
+			if !tracked[addr] {
+				fmt.Fprintf(&sb, "  %s stray holder %s(%s) = %s\n", denom, s.nameOf(addr), addr, amt)
+			}
+		}
+	}
+	return sb.String()
+}
+
 func (s *ConservationSuite) TestDEXValueConservation() {
 	const rounds = 150
 	for r := 0; r < rounds; r++ {
 		for _, a := range s.actors {
-			beforeDump := s.dump(fmt.Sprintf("BEFORE r%d %s", r, "action"))
 			before := s.dumpState()
 			act := s.oneAction(a)
 			after := s.dumpState()
 			if before[0] != after[0] || before[1] != after[1] || before[2] != after[2] || before[3] != after[3] {
-				afterDump := s.dump(fmt.Sprintf("AFTER r%d", r))
-				s.T().Logf("DRIFT by %s doing %s\nuniverseA %s->%s\nuniverseB %s->%s\nchainA %s->%s\nchainB %s->%s\nBEFORE:\n%s\nAFTER:\n%s",
-					a, act, before[0], after[0], before[1], after[1], before[2], after[2], before[3], after[3],
-					beforeDump, afterDump)
+				s.T().Logf("DRIFT by %s doing %s at round %d\nuniverseA %s->%s\nuniverseB %s->%s\nchainA %s->%s\nchainB %s->%s\nSTRAY:\n%s\nSTATE:\n%s",
+					a, act, r, before[0], after[0], before[1], after[1], before[2], after[2], before[3], after[3],
+					s.strayHolders(), s.dump("state at drift"))
 				s.T().FailNow()
 			}
 			s.check(fmt.Sprintf("round %d actor %s", r, a))
