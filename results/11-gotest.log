@@ -1,0 +1,397 @@
+go: downloading cosmossdk.io/errors v1.1.0
+go: downloading github.com/neutron-org/cosmos-sdk v0.53.4-neutron
+go: downloading cosmossdk.io/math v1.5.3
+go: downloading cosmossdk.io/store v1.1.2
+go: downloading github.com/stretchr/testify v1.11.1
+go: downloading cosmossdk.io/core v0.11.3
+go: downloading github.com/cometbft/cometbft v0.38.21
+go: downloading github.com/gorilla/mux v1.8.1
+go: downloading github.com/grpc-ecosystem/grpc-gateway v1.16.0
+go: downloading github.com/spf13/cobra v1.10.2
+go: downloading github.com/cosmos/gogoproto v1.7.2
+go: downloading gopkg.in/yaml.v2 v2.4.0
+go: downloading golang.org/x/exp v0.0.0-20250305212735-054e65f0b394
+go: downloading github.com/spf13/cast v1.10.0
+go: downloading github.com/spf13/pflag v1.0.10
+go: downloading github.com/cosmos/ibc-go/v10 v10.5.0
+go: downloading github.com/cosmos/ics23/go v0.11.0
+go: downloading google.golang.org/grpc v1.79.3
+go: downloading github.com/neutron-org/wasmd v0.61.14-neutron
+go: downloading cosmossdk.io/log v1.6.1
+go: downloading github.com/golang/mock v1.6.0
+go: downloading github.com/cosmos/cosmos-proto v1.0.0-beta.5
+go: downloading github.com/golang/protobuf v1.5.4
+go: downloading google.golang.org/genproto/googleapis/api v0.0.0-20251222181119-0a764e51fe1b
+go: downloading google.golang.org/protobuf v1.36.11
+go: downloading google.golang.org/genproto v0.0.0-20250603155806-513f23925822
+go: downloading github.com/CosmWasm/wasmvm/v3 v3.0.7
+go: downloading github.com/pkg/errors v0.9.1
+go: downloading github.com/regen-network/protobuf v1.3.3-alpha.regen.1
+go: downloading cosmossdk.io/x/tx v0.14.0
+go: downloading github.com/cosmos/cosmos-db v1.1.3
+go: downloading github.com/hashicorp/go-metrics v0.5.4
+go: downloading cosmossdk.io/depinject v1.2.1
+go: downloading cosmossdk.io/collections v1.4.0
+go: downloading github.com/hashicorp/golang-lru v1.0.2
+go: downloading sigs.k8s.io/yaml v1.6.0
+go: downloading github.com/tendermint/go-amino v0.16.0
+go: downloading github.com/cockroachdb/errors v1.12.0
+go: downloading github.com/grpc-ecosystem/go-grpc-middleware v1.4.0
+go: downloading cosmossdk.io/api v0.9.2
+go: downloading github.com/spf13/viper v1.21.0
+go: downloading github.com/google/go-cmp v0.7.0
+go: downloading github.com/cosmos/go-bip39 v1.0.0
+go: downloading github.com/oasisprotocol/curve25519-voi v0.0.0-20230904125328-1f23a7beb09a
+go: downloading golang.org/x/crypto v0.46.0
+go: downloading google.golang.org/genproto/googleapis/rpc v0.0.0-20260114163908-3f89685c29c3
+go: downloading cosmossdk.io/x/upgrade v0.2.0
+go: downloading github.com/ethereum/go-ethereum v1.17.0
+go: downloading github.com/bytedance/sonic v1.15.0
+go: downloading github.com/rs/zerolog v1.34.0
+go: downloading github.com/distribution/reference v0.5.0
+go: downloading cosmossdk.io/x/evidence v0.2.0
+go: downloading cosmossdk.io/x/feegrant v0.2.0
+go: downloading github.com/google/gofuzz v1.2.0
+go: downloading github.com/prometheus/client_golang v1.23.2
+go: downloading golang.org/x/net v0.48.0
+go: downloading github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
+go: downloading github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2
+go: downloading github.com/hdevalence/ed25519consensus v0.2.0
+go: downloading cosmossdk.io/client/v2 v2.0.0-beta.7
+go: downloading github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v10 v10.1.0
+go: downloading github.com/skip-mev/block-sdk/v2 v2.1.5
+go: downloading github.com/neutron-org/feemarket v1.2.0
+go: downloading github.com/neutron-org/connect v1.3.1
+go: downloading github.com/prometheus/common v0.67.5
+go: downloading gotest.tools/v3 v3.5.2
+go: downloading pgregory.net/rapid v1.2.0
+go: downloading golang.org/x/sync v0.19.0
+go: downloading github.com/cockroachdb/pebble v1.1.5
+go: downloading github.com/google/btree v1.1.3
+go: downloading github.com/syndtr/goleveldb v1.0.1-0.20210819022825-2ae1ddf74ef7
+go: downloading github.com/hashicorp/go-immutable-radix v1.3.1
+go: downloading github.com/decred/dcrd/dcrec/secp256k1/v4 v4.4.0
+go: downloading go.uber.org/mock v0.6.0
+go: downloading github.com/shamaton/msgpack/v2 v2.2.3
+go: downloading github.com/cosmos/btcutil v1.0.5
+go: downloading cosmossdk.io/schema v1.1.0
+go: downloading github.com/tidwall/btree v1.8.1
+go: downloading github.com/iancoleman/strcase v0.3.0
+go: downloading github.com/cosmos/iavl v1.2.0
+go: downloading github.com/hashicorp/go-hclog v1.6.3
+go: downloading github.com/hashicorp/go-plugin v1.6.3
+go: downloading go.yaml.in/yaml/v2 v2.4.3
+go: downloading github.com/huandu/skiplist v1.2.1
+go: downloading github.com/cockroachdb/logtags v0.0.0-20241215232642-bb51bb14a506
+go: downloading github.com/cockroachdb/redact v1.1.6
+go: downloading github.com/getsentry/sentry-go v0.42.0
+go: downloading github.com/go-kit/kit v0.13.0
+go: downloading github.com/cosmos/keyring v1.2.0
+go: downloading github.com/fsnotify/fsnotify v1.9.0
+go: downloading github.com/go-viper/mapstructure/v2 v2.4.0
+go: downloading github.com/sagikazarmark/locafero v0.11.0
+go: downloading github.com/spf13/afero v1.15.0
+go: downloading github.com/bgentry/speakeasy v0.2.0
+go: downloading github.com/mattn/go-isatty v0.0.20
+go: downloading golang.org/x/sys v0.41.0
+go: downloading github.com/mattn/go-colorable v0.1.14
+go: downloading github.com/opencontainers/go-digest v1.0.0
+go: downloading github.com/beorn7/perks v1.0.1
+go: downloading github.com/cespare/xxhash/v2 v2.3.0
+go: downloading github.com/prometheus/client_model v0.6.2
+go: downloading github.com/prometheus/procfs v0.12.0
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading filippo.io/edwards25519 v1.1.1
+go: downloading github.com/cosmos/gogogateway v1.2.0
+go: downloading github.com/gorilla/handlers v1.5.2
+go: downloading github.com/improbable-eng/grpc-web v0.15.0
+go: downloading github.com/bits-and-blooms/bitset v1.24.3
+go: downloading github.com/klauspost/compress v1.18.4
+go: downloading github.com/cosmos/interchain-security/v7 v7.0.1
+go: downloading github.com/go-kit/log v0.2.1
+go: downloading github.com/go-logfmt/logfmt v0.6.0
+go: downloading github.com/DataDog/datadog-go v4.8.3+incompatible
+go: downloading github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822
+go: downloading github.com/cockroachdb/fifo v0.0.0-20240616162244-4768e80dfb9a
+go: downloading github.com/cockroachdb/tokenbucket v0.0.0-20230807174530-cc333fc44b06
+go: downloading github.com/emicklei/dot v1.6.2
+go: downloading github.com/fatih/color v1.18.0
+go: downloading github.com/hashicorp/yamux v0.1.2
+go: downloading github.com/oklog/run v1.1.0
+go: downloading github.com/kr/pretty v0.3.1
+go: downloading github.com/cometbft/cometbft-db v0.15.0
+go: downloading github.com/gorilla/websocket v1.5.3
+go: downloading github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475
+go: downloading github.com/dvsekhvalnov/jose2go v1.7.0
+go: downloading github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2
+go: downloading github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c
+go: downloading github.com/mtibben/percent v0.2.1
+go: downloading golang.org/x/term v0.38.0
+go: downloading github.com/sourcegraph/conc v0.3.1-0.20240121214520-5f936abd7ae8
+go: downloading golang.org/x/text v0.34.0
+go: downloading github.com/subosito/gotenv v1.6.0
+go: downloading github.com/pelletier/go-toml/v2 v2.2.4
+go: downloading go.yaml.in/yaml/v3 v3.0.4
+go: downloading github.com/iancoleman/orderedmap v0.3.0
+go: downloading github.com/lib/pq v1.10.9
+go: downloading github.com/rs/cors v1.11.1
+go: downloading github.com/manifoldco/promptui v0.9.0
+go: downloading github.com/bytedance/gopkg v0.1.3
+go: downloading github.com/cloudwego/base64x v0.1.6
+go: downloading golang.org/x/arch v0.17.0
+go: downloading github.com/gogo/googleapis v1.4.1
+go: downloading github.com/felixge/httpsnoop v1.0.4
+go: downloading github.com/holiman/uint256 v1.3.2
+go: downloading github.com/cenkalti/backoff/v4 v4.3.0
+go: downloading github.com/desertbit/timer v1.0.1
+go: downloading nhooyr.io/websocket v1.8.17
+go: downloading github.com/DataDog/zstd v1.5.7
+go: downloading github.com/golang/snappy v1.0.0
+go: downloading github.com/hashicorp/golang-lru/v2 v2.0.7
+go: downloading github.com/kr/text v0.2.0
+go: downloading github.com/rogpeppe/go-internal v1.14.1
+go: downloading github.com/cockroachdb/apd/v2 v2.0.2
+go: downloading github.com/minio/highwayhash v1.0.3
+go: downloading github.com/hashicorp/go-cleanhttp v0.5.2
+go: downloading github.com/hashicorp/go-getter v1.7.9
+go: downloading github.com/chzyer/readline v1.5.1
+go: downloading github.com/google/orderedcode v0.0.1
+go: downloading github.com/klauspost/cpuid/v2 v2.2.10
+go: downloading github.com/bytedance/sonic/loader v0.5.0
+go: downloading github.com/twitchyliquid64/golang-asm v0.15.1
+go: downloading cloud.google.com/go/storage v1.50.0
+go: downloading github.com/aws/aws-sdk-go v1.49.0
+go: downloading cloud.google.com/go v0.120.0
+go: downloading github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d
+go: downloading github.com/hashicorp/go-version v1.7.0
+go: downloading github.com/mitchellh/go-homedir v1.1.0
+go: downloading github.com/hashicorp/go-safetemp v1.0.0
+go: downloading github.com/ulikunitz/xz v0.5.14
+go: downloading golang.org/x/oauth2 v0.34.0
+go: downloading google.golang.org/api v0.247.0
+go: downloading cloud.google.com/go/compute/metadata v0.9.0
+go: downloading cloud.google.com/go/iam v1.5.2
+go: downloading github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric v0.50.0
+go: downloading github.com/google/uuid v1.6.0
+go: downloading github.com/googleapis/gax-go/v2 v2.15.0
+go: downloading go.opentelemetry.io/contrib/detectors/gcp v1.39.0
+go: downloading go.opentelemetry.io/otel v1.40.0
+go: downloading go.opentelemetry.io/otel/sdk/metric v1.40.0
+go: downloading go.opentelemetry.io/otel/sdk v1.40.0
+go: downloading go.opentelemetry.io/otel/trace v1.40.0
+go: downloading cloud.google.com/go/monitoring v1.24.2
+go: downloading github.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping v0.50.0
+go: downloading github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp v1.30.0
+go: downloading go.opentelemetry.io/otel/metric v1.40.0
+go: downloading cloud.google.com/go/auth v0.16.4
+go: downloading cloud.google.com/go/auth/oauth2adapt v0.2.8
+go: downloading go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.62.0
+go: downloading github.com/jmespath/go-jmespath v0.4.0
+go: downloading github.com/go-logr/logr v1.4.3
+go: downloading go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.61.0
+go: downloading golang.org/x/time v0.12.0
+go: downloading github.com/go-logr/stdr v1.2.2
+go: downloading go.opentelemetry.io/auto/sdk v1.2.1
+go: downloading github.com/google/s2a-go v0.1.9
+go: downloading github.com/googleapis/enterprise-certificate-proxy v0.3.6
+go: downloading github.com/envoyproxy/go-control-plane/envoy v1.36.0
+go: downloading github.com/spiffe/go-spiffe/v2 v2.6.0
+go: downloading github.com/cncf/xds/go v0.0.0-20251210132809-ee656c7534f5
+go: downloading github.com/go-jose/go-jose/v4 v4.1.3
+go: downloading github.com/envoyproxy/protoc-gen-validate v1.3.0
+go: downloading cel.dev/expr v0.25.1
+ok  	github.com/neutron-org/neutron/v11/x/dex	0.539s
+ok  	github.com/neutron-org/neutron/v11/x/dex/client/cli	0.637s [no tests to run]
+ok  	github.com/neutron-org/neutron/v11/x/dex/keeper	18.810s
+?   	github.com/neutron-org/neutron/v11/x/dex/keeper/internal/testutils	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/dex/migrations/v3	1.518s
+ok  	github.com/neutron-org/neutron/v11/x/dex/migrations/v4	1.010s
+ok  	github.com/neutron-org/neutron/v11/x/dex/migrations/v5	0.857s
+ok  	github.com/neutron-org/neutron/v11/x/dex/migrations/v6	0.859s
+ok  	github.com/neutron-org/neutron/v11/x/dex/migrations/v7	0.853s
+?   	github.com/neutron-org/neutron/v11/x/dex/migrations/v8	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/dex/simulation	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/dex/types	1.676s
+?   	github.com/neutron-org/neutron/v11/x/dex/types/v2	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/dex/utils	0.031s
+ok  	github.com/neutron-org/neutron/v11/utils	0.730s
+ok  	github.com/neutron-org/neutron/v11/utils/dcli	0.553s
+ok  	github.com/neutron-org/neutron/v11/utils/math	0.008s
+?   	github.com/neutron-org/neutron/v11/utils/stateverification	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/ibc-rate-limit	14.820s
+?   	github.com/neutron-org/neutron/v11/x/ibc-rate-limit/client/cli	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/ibc-rate-limit/keeper	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/ibc-rate-limit/simulation	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/ibc-rate-limit/types	0.075s
+ok  	github.com/neutron-org/neutron/v11/x/contractmanager	0.162s
+ok  	github.com/neutron-org/neutron/v11/x/contractmanager/client/cli	7.774s
+ok  	github.com/neutron-org/neutron/v11/x/contractmanager/keeper	1.027s
+ok  	github.com/neutron-org/neutron/v11/x/contractmanager/migrations/v2	1.220s
+ok  	github.com/neutron-org/neutron/v11/x/contractmanager/types	0.072s
+?   	github.com/neutron-org/neutron/v11/x/contractmanager/types/v1	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/feerefunder	0.117s
+ok  	github.com/neutron-org/neutron/v11/x/feerefunder/client/cli	5.094s
+ok  	github.com/neutron-org/neutron/v11/x/feerefunder/keeper	1.028s
+ok  	github.com/neutron-org/neutron/v11/x/feerefunder/migrations/v2	1.718s
+ok  	github.com/neutron-org/neutron/v11/x/feerefunder/types	0.090s
+?   	github.com/neutron-org/neutron/v11/x/tokenfactory	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/tokenfactory/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/tokenfactory/keeper	30.652s
+ok  	github.com/neutron-org/neutron/v11/x/tokenfactory/migrations/v2	2.223s
+ok  	github.com/neutron-org/neutron/v11/x/tokenfactory/types	0.103s
+?   	github.com/neutron-org/neutron/v11/x/tokenfactory/types/v1beta1	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/coinfactory	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/coinfactory/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/coinfactory/keeper	34.437s
+ok  	github.com/neutron-org/neutron/v11/x/coinfactory/types	0.157s
+?   	github.com/neutron-org/neutron/v11/x/coinfactory/types/v1beta1	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/interchainqueries	0.091s
+?   	github.com/neutron-org/neutron/v11/x/interchainqueries/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/interchainqueries/keeper	55.474s
+ok  	github.com/neutron-org/neutron/v11/x/interchainqueries/migrations/v3	1.644s
+?   	github.com/neutron-org/neutron/v11/x/interchainqueries/simulation	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/interchainqueries/types	0.159s
+ok  	github.com/neutron-org/neutron/v11/x/interchaintxs	0.143s
+?   	github.com/neutron-org/neutron/v11/x/interchaintxs/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/interchaintxs/keeper	1.550s
+?   	github.com/neutron-org/neutron/v11/x/interchaintxs/simulation	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/interchaintxs/types	0.065s
+ok  	github.com/neutron-org/neutron/v11/x/transfer	0.846s
+ok  	github.com/neutron-org/neutron/v11/x/transfer/keeper	2.843s
+?   	github.com/neutron-org/neutron/v11/x/transfer/types	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/globalfee	0.086s
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/ante	0.057s
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/ante/antetest	1.283s
+?   	github.com/neutron-org/neutron/v11/x/globalfee/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/keeper	0.077s
+?   	github.com/neutron-org/neutron/v11/x/globalfee/migrations/v2	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/migrations/v2/v2_test	0.074s
+?   	github.com/neutron-org/neutron/v11/x/globalfee/migrations/v3	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/migrations/v3/v3_test	0.078s
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/types	0.082s
+ok  	github.com/neutron-org/neutron/v11/x/cron	0.076s
+ok  	github.com/neutron-org/neutron/v11/x/cron/client/cli	7.025s
+ok  	github.com/neutron-org/neutron/v11/x/cron/keeper	1.235s
+ok  	github.com/neutron-org/neutron/v11/x/cron/migrations/v2	1.080s
+?   	github.com/neutron-org/neutron/v11/x/cron/simulation	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/cron/types	0.081s
+?   	github.com/neutron-org/neutron/v11/x/cron/types/v1	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/state-verifier	0.736s
+?   	github.com/neutron-org/neutron/v11/x/state-verifier/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/state-verifier/keeper	3.410s
+?   	github.com/neutron-org/neutron/v11/x/state-verifier/types	[no test files]
+===== AUDIT POC seed=1337 =====
+=== RUN   TestDEXValueConservationFuzz
+=== RUN   TestDEXValueConservationFuzz/TestDEXValueConservation
+    audit_conservation_test.go:468: QUIESCENCE TokenA: module=5 fractionalCredits=5 stranded=0 dustBound=22
+    audit_conservation_test.go:468: QUIESCENCE TokenB: module=5 fractionalCredits=5 stranded=0 dustBound=22
+    audit_conservation_test.go:474: AUDIT SUMMARY seed=1337 actions=1176 committed=704 invariantChecks=1201
+    audit_conservation_test.go:477: FINAL neutron1v9jxgujh7ejg3t3g0gnzqgpqyqszqgps39uanz: A=1538501761735 B=463849966883
+    audit_conservation_test.go:477: FINAL neutron1v9jxguk04vm2qzj98lzzqgpqyqszqgp3vzfuwn: A=1707775757015 B=289757981131
+    audit_conservation_test.go:477: FINAL neutron1v9jxguhdn4cd3urn38rzqgpqyqszqgpjdyen6v: A=1040662959055 B=956827265065
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu4d7u6na8r3atuzqgpqyqszqgpnxrz0ct: A=1277516481818 B=724386980664
+    audit_conservation_test.go:477: FINAL neutron1v9jxgukg6fngs4hdsj6jqgpqyqszqgp56sx0qx: A=941933532322 B=1058802425030
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu32tz4ej4vvllcjqgpqyqszqgp4h769x0: A=29535000000 B=1967010730327
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu4n3aq2hyzp2fuzqgpqyqszqgpkfjapxw: A=895440783064 B=1104648446609
+    audit_conservation_test.go:477: FINAL neutron1v9jxgusg0c70crtthrmjqgpqyqszqgph7r5eph: A=568633724986 B=1434716204286
+    audit_conservation_test.go:479: FINAL module: A=5 B=5
+        POOLS:
+          pool 0 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+          pool 1 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+          pool 2 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+--- PASS: TestDEXValueConservationFuzz (0.80s)
+    --- PASS: TestDEXValueConservationFuzz/TestDEXValueConservation (0.79s)
+PASS
+ok  	github.com/neutron-org/neutron/v11/x/dex/keeper	1.285s
+===== AUDIT POC seed=90210 =====
+=== RUN   TestDEXValueConservationFuzz
+=== RUN   TestDEXValueConservationFuzz/TestDEXValueConservation
+    audit_conservation_test.go:468: QUIESCENCE TokenA: module=3 fractionalCredits=3 stranded=0 dustBound=22
+    audit_conservation_test.go:468: QUIESCENCE TokenB: module=4 fractionalCredits=4 stranded=0 dustBound=22
+    audit_conservation_test.go:474: AUDIT SUMMARY seed=90210 actions=1179 committed=690 invariantChecks=1201
+    audit_conservation_test.go:477: FINAL neutron1v9jxgunnly29wztx026jqgpqyqszqgpsesm2kq: A=789419058711 B=1209608707931
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu352uqa9pfe8phzqgpqyqszqgp3rsfgya: A=244185471137 B=1747744953320
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu3txeknnnl3wj4zqgpqyqszqgpjqr927e: A=1512580412762 B=490603645682
+    audit_conservation_test.go:477: FINAL neutron1v9jxgun5e8zuunz2v2azqgpqyqszqgpn2j6jqu: A=1206090622985 B=800222326692
+    audit_conservation_test.go:477: FINAL neutron1v9jxgukp3fw03mgpjuljqgpqyqszqgp56zyu08: A=1383829147470 B=615902727843
+    audit_conservation_test.go:477: FINAL neutron1v9jxgus6d98puh3e86dzqgpqyqszqgp4zhtfkx: A=613867980267 B=1383060759336
+    audit_conservation_test.go:477: FINAL neutron1v9jxgujpzpdxnuhcrsazqgpqyqszqgpkmj4cl5: A=997609087051 B=1004485002101
+    audit_conservation_test.go:477: FINAL neutron1v9jxguhl49yykah34rqjqgpqyqszqgphmfyg20: A=1252418219614 B=748371877091
+    audit_conservation_test.go:479: FINAL module: A=3 B=4
+        POOLS:
+          pool 0 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+          pool 1 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+          pool 2 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+--- PASS: TestDEXValueConservationFuzz (0.87s)
+    --- PASS: TestDEXValueConservationFuzz/TestDEXValueConservation (0.87s)
+PASS
+ok  	github.com/neutron-org/neutron/v11/x/dex/keeper	1.361s
+===== AUDIT POC seed=424242 =====
+=== RUN   TestDEXValueConservationFuzz
+=== RUN   TestDEXValueConservationFuzz/TestDEXValueConservation
+    audit_conservation_test.go:468: QUIESCENCE TokenA: module=4 fractionalCredits=4 stranded=0 dustBound=22
+    audit_conservation_test.go:468: QUIESCENCE TokenB: module=4 fractionalCredits=4 stranded=0 dustBound=22
+    audit_conservation_test.go:474: AUDIT SUMMARY seed=424242 actions=1202 committed=778 invariantChecks=1201
+    audit_conservation_test.go:477: FINAL neutron1v9jxgunn06zwmz0v9uzzqgpqyqszqgpstg03dd: A=1603570846107 B=399321683983
+    audit_conservation_test.go:477: FINAL neutron1v9jxguskqrmrddvuy7fzqgpqyqszqgp3jjm7v9: A=661105265325 B=1334628516251
+    audit_conservation_test.go:477: FINAL neutron1v9jxguk8j0w0d2qmcsezqgpqyqszqgpja9l3s5: A=526340050201 B=1477122197933
+    audit_conservation_test.go:477: FINAL neutron1v9jxgusjfnmzrndfml5jqgpqyqszqgpner3ex2: A=1047544849987 B=947205067018
+    audit_conservation_test.go:477: FINAL neutron1v9jxgukp5tacpwxsjctzqgpqyqszqgp5t2h4gl: A=1088141231222 B=910326970495
+    audit_conservation_test.go:477: FINAL neutron1v9jxgukstdx5tw4parkzqgpqyqszqgp4gtue3q: A=1262555239257 B=740766778240
+    audit_conservation_test.go:477: FINAL neutron1v9jxgujmqajc3q4j9y8jqgpqyqszqgpkcp549s: A=1023895221052 B=979680690062
+    audit_conservation_test.go:477: FINAL neutron1v9jxgun9lgzpcjw53zzzqgpqyqszqgph3aqqm2: A=786847296845 B=1210948096014
+    audit_conservation_test.go:479: FINAL module: A=4 B=4
+        POOLS:
+          pool 0 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+          pool 1 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+          pool 2 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+--- PASS: TestDEXValueConservationFuzz (0.78s)
+    --- PASS: TestDEXValueConservationFuzz/TestDEXValueConservation (0.78s)
+PASS
+ok  	github.com/neutron-org/neutron/v11/x/dex/keeper	1.242s
+===== AUDIT POC seed=7 =====
+=== RUN   TestDEXValueConservationFuzz
+=== RUN   TestDEXValueConservationFuzz/TestDEXValueConservation
+    audit_conservation_test.go:468: QUIESCENCE TokenA: module=3 fractionalCredits=3 stranded=0 dustBound=22
+    audit_conservation_test.go:468: QUIESCENCE TokenB: module=4 fractionalCredits=4 stranded=0 dustBound=22
+    audit_conservation_test.go:474: AUDIT SUMMARY seed=7 actions=1192 committed=723 invariantChecks=1201
+    audit_conservation_test.go:477: FINAL neutron1v9jxguhceegxfmvgjs4zqgpqyqszqgpsdqe83s: A=1540249233641 B=462838715644
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu4l2zj3ne606k9jqgpqyqszqgp392k5y3: A=858972603265 B=1140695256192
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu3k2aza8zt7rtkjqgpqyqszqgpjdwegtr: A=1476725180566 B=522909184742
+    audit_conservation_test.go:477: FINAL neutron1v9jxgunljy8ty4y45w0zqgpqyqszqgpnn5d5mc: A=574099123200 B=1420446732123
+    audit_conservation_test.go:477: FINAL neutron1v9jxgusc49dyall00rjzqgpqyqszqgp5jzst7g: A=1174328914273 B=824673125508
+    audit_conservation_test.go:477: FINAL neutron1v9jxgukguh4lzgnhfs2zqgpqyqszqgp46uy8ux: A=219598283663 B=1775545903613
+    audit_conservation_test.go:477: FINAL neutron1v9jxgunpdm7fpycs2a8zqgpqyqszqgpk6ey3jm: A=1074859014943 B=932266905351
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu5auy2zry64s6uzqgpqyqszqgphveq57n: A=1081167646446 B=920624176823
+    audit_conservation_test.go:479: FINAL module: A=3 B=4
+        POOLS:
+          pool 0 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+          pool 1 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+          pool 2 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+--- PASS: TestDEXValueConservationFuzz (0.76s)
+    --- PASS: TestDEXValueConservationFuzz/TestDEXValueConservation (0.76s)
+PASS
+ok  	github.com/neutron-org/neutron/v11/x/dex/keeper	1.241s
+===== AUDIT POC seed=20261112 =====
+=== RUN   TestDEXValueConservationFuzz
+=== RUN   TestDEXValueConservationFuzz/TestDEXValueConservation
+    audit_conservation_test.go:468: QUIESCENCE TokenA: module=3 fractionalCredits=3 stranded=0 dustBound=22
+    audit_conservation_test.go:468: QUIESCENCE TokenB: module=5 fractionalCredits=5 stranded=0 dustBound=22
+    audit_conservation_test.go:474: AUDIT SUMMARY seed=20261112 actions=1160 committed=652 invariantChecks=1201
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu4xu4m2rapf09gjqgpqyqszqgpsswhzzx: A=1193737361417 B=807209711227
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu5d98g2y9gae3ezqgpqyqszqgp3qgxmz4: A=371124260254 B=1626753156090
+    audit_conservation_test.go:477: FINAL neutron1v9jxgunwr0cmcsggw5mjqgpqyqszqgpj2asvy6: A=540431267111 B=1453165269564
+    audit_conservation_test.go:477: FINAL neutron1v9jxgukmgytmx3vpm8xjqgpqyqszqgpnj77n9z: A=645330954494 B=1356036529018
+    audit_conservation_test.go:477: FINAL neutron1v9jxguns38sejqaz5y4zqgpqyqszqgp5d8dy49: A=1739594250398 B=262642618571
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu4253ylzq8suzxzqgpqyqszqgp48fstxp: A=1445340083810 B=557280932413
+    audit_conservation_test.go:477: FINAL neutron1v9jxgushwc0qk34h4qvzqgpqyqszqgpkmtdgrg: A=1725116583780 B=280956159253
+    audit_conservation_test.go:477: FINAL neutron1v9jxgu5wh4tdq6gzszajqgpqyqszqgphjg7hd5: A=339325238733 B=1655955623859
+    audit_conservation_test.go:479: FINAL module: A=3 B=5
+        POOLS:
+          pool 0 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+          pool 1 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+          pool 2 TokenA<>TokenB reserves0=0.000000000000000000000000000 reserves1=0.000000000000000000000000000 shares(held/supply)=0/0 claim0=<nil> claim1=<nil>
+--- PASS: TestDEXValueConservationFuzz (0.77s)
+    --- PASS: TestDEXValueConservationFuzz/TestDEXValueConservation (0.77s)
+PASS
+ok  	github.com/neutron-org/neutron/v11/x/dex/keeper	1.249s
