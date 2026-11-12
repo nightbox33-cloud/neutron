@@ -72,7 +72,7 @@ Invariantes duras, todas en verde en los 5 seeds:
 3. **Salida completa posible**: alquietud tras hasta 30 pasadas de drenaje; después, **todo** LP share de **todo** actor es canjeable y **toda** reclamación de tranche es pagadera sin que el módulo se quede corto (ningún `insufficient funds`).
 4. **Cero valor embalsado**: al final, `balance del módulo − Σ créditos fraccionales` = **0** para `TokenA` y `TokenB` en los 5 seeds (cota de dust permitida: 22). Es decir, tras la salida masiva no queda ni una unidad atrapada: la contabilidad del `FractionalBanker` (`x/dex/keeper/fractional_banker.go`) cierra exactamente, incluyendo el truncado de dust.
 
-Salida literal (seed 1337 / 90210 / 424242 / 7 / 20261112, `results/11-gotest.log`):
+Salida literal (seeds 1337 / 90210 / 424242 / 7 / 20261112; idéntica estructura en `results/11-gotest.log` y `results/12-gotest.log`):
 
 ```
 QUIESCENCE TokenA: module=5 fractionalCredits=5 stranded=0 dustBound=22
@@ -102,7 +102,7 @@ if ack == nil || ack.Success() {
     writeFn()
 } else { /* sólo se re-emiten eventos de error */ }
 ```
-Es decir, cuando `x/ibc-hooks` devuelve el ack de error en `wasm_hook.go:112`, el crédito de la línea 87 **nunca se persiste**: no hay vouchers huérfanos, no hay suministro sin respaldo, y el reembolso en la cadena de origen es exactamente consistente. El propio repo lo tiene testeado: `x/ibc-hooks/ibc_middleware_test.go:220-221` (`TestFundsAreReturnedOnFailedContractExec`, "If the wasm call fails, the contract acknowledgement should be an error and the funds returned"). Queda como nota de diseño (no vulnerabilidad): el paquete queda *no recibido*, así que un hook que falle de forma repetida bloquea esa secuencia hasta que expire por timeout; no hay pérdida de fondos.
+Es decir, cuando `x/ibc-hooks` devuelve el ack de error en `wasm_hook.go:112`, el crédito de la línea 87 **nunca se persiste**: no hay vouchers huérfanos, no hay suministro sin respaldo, y el reembolso en la cadena de origen es exactamente consistente. Refuerzo: `WasmHooks` solo implementa `OnRecvPacketOverride` (`grep 'func (h WasmHooks) On'` → una sola coincidencia, `wasm_hook.go:43`); los `OnAcknowledgementPacket`/`OnTimeoutPacket` del middleware son pasadas limpias (`ibc_module.go:167-200`), así que el módulo nunca toca estado en el camino de ack/timeout y no hay replay posible desde ahí. El propio repo lo tiene testeado: `x/ibc-hooks/ibc_middleware_test.go:220-221` (`TestFundsAreReturnedOnFailedContractExec`, "If the wasm call fails, the contract acknowledgement should be an error and the funds returned"). Queda como nota de diseño (no vulnerabilidad): el paquete queda *no recibido*, así que un hook que falle de forma repetida bloquea esa secuencia hasta que expire por timeout; no hay pérdida de fondos.
 
 **V2 — `x/dex`: retiro de LP shares de dos pares distintos en un mismo `MsgWithdrawalWithShares` ⇒ pago en el denom equivocado (1:1) con robo a otros LPs.**
 Ruta real: `WithdrawWithSharesCore` usa `poolsToRemoveFrom[0].MustPairID()` como par de *todos* los pools (`x/dex/keeper/withdraw.go:48`) y `ExecuteWithdraw` acumula `totalReserve0ToRemove/1` sumando las reservas propias de cada pool (`:115-159`), pagando después esos totales como `pairID.Token0`/`Token1` (`:80-95`). Si se admitieran pools de `(A,B)` y `(B,A)` en la misma msg, un LP con depósito unilateral barato en `(B,A)` cobraría ese saldo como `A` a 1:1, drenando el `A` de otros LPs del módulo.
@@ -137,6 +137,7 @@ Hipótesis: el módulo quedaría debiendo a terceros una cantidad agregada (over
 | Queries que mutan | `keeper/grpc_query_simulate_withdrawal.go:12-56,59-101`, `grpc_query_simulate_withdraw_filled_limit_order.go` | Todas envueltas en `ctx.CacheContext()` con `write` descartado ⇒ sin mutación persistente desde query |
 | JIT / orden de asserts | `keeper/place_limit_order.go` (`AssertCanPlaceJIT` tras escribir la tranche) | Solo gasto de gas en el bypass; sin efecto contable por atomicidad de tx |
 | `x/ibc-rate-limit` | `rate_limit.go`, `ics4_wrapper.go`, `ibc_module.go`, `types/params.go` + lectura completa del contrato | Contabilidad por **flujo neto** (`balance_on(direction)`), `capacity = valor_de_canal * pct/100`, `min(…,100)`, `is_expired` estricto, `not_configured` ⇒ allow-all. `SendPacket` sudo va con `denom:"omitted"`, `sequence:0` y el contrato ignora la secuencia (benigno). El límite de entrada se consume antes de la ejecución y **no** se devuelve si la app falla luego (conservador, no inseguro) |
+| `x/ibc-hooks` pila de recv | `wasm_hook.go:43-121`, `ibc_module.go`, `ics4_middleware.go`, `sdkmodule.go:112,126,131`, `utils/utils.go:44-70` | Memo validado (`validateAndParseMemo:166-221`: exige `wasm.contract == receiver` y `wasm.msg` mapa); el único hook implementado es `OnRecvPacketOverride`; el `funds` del `ExecuteContract` es exactamente `data.Amount` del denom local, de modo que un contrato solo puede recibir lo que el paquete trajo (nada de retirar el saldo acumulado de la cuenta pin); el fracaso del hook produce descarte de estado por core IBC (V1) |
 | `x/contractmanager` | `ibc_middleware.go`, `keeper/{sudo,msg_server,failure}.go` | Límite de sudo por contrato y cola de fallos; `ReplayStargate` requiere que el reply exista; no mueve fondos |
 | `x/interchaintxs` | `keeper/msg_server.go:1-150`, `keeper.go` (`ChargeFee`) | Ambos msgs exigen `HasContractInfo(sender)` (solo contratos); `ChargeFee` = `fee.IsAnyGTE(RegisterFee)` + `SendCoins(payer→feeCollector)`; `RegisterFee` lo fija gov; `MsgSubmitTx` topa `len(msgs)` y bloquea fees de ack/timeout |
 | `x/feerefunder` | `keeper/keeper.go:59-200`, `msg_server.go:26` | Único msg es `UpdateParams` (autoridad). `LockFees` guarda/traslada y exige `checkFees` + canal existente; `Distribute{Ack,Timeout}Fee` solo paga al `receiver` (dueno del packet) y devuelve el fee no usado al `feeInfo.Payer`, borra el `FeeInfo` (no hay doble pago: ibc-go garantiza ack XOR timeout por secuencia). Pánico en `distributeFee` falla el tx del relayer (no corrompe estado) |
@@ -175,15 +176,20 @@ Todos los comandos corrieron en GitHub Actions sobre el commit auditado (workflo
      ./x/interchainqueries/... ./x/interchaintxs/... ./x/transfer/... \
      ./x/globalfee/... ./x/cron/... ./x/state-verifier/...
    ```
-   Salida: **53 paquetes `ok`, 0 `FAIL`, 0 pánicos** (`results/2-gotest.log`, `results/11-gotest.log`). Incluye el canary `utils/math/probe_audit_test.go` (añadido para probar que el runner ejecuta tests y los reporta).
+   Salida: **53 paquetes `ok`, 0 `FAIL`, 0 pánicos** en `results/2-gotest.log`; **61 paquetes `ok`, 0 `FAIL`, 0 pánicos** en `results/12-gotest.log` (añadido `./x/ibc-hooks/...`). Incluye el canary `utils/math/probe_audit_test.go` (añadido para probar que el runner ejecuta tests y los reporta; si el runner no corriera nada, el canary fallaría).
 2. **Fuzz de invariantes del DEX (PoC propio)** — run `43141630636` y `43142617184`:
    ```
    AUDIT_SEED={1337,90210,424242,7,20261112} VERSION=test go test -mod=mod \
      -tags 'ledger test_ledger_mock' -v -run 'TestDEXValueConservationFuzz' ./x/dex/keeper/
    ```
    Salida: `--- PASS: TestDEXValueConservationFuzz` en los 5 seeds; `ok x/dex/keeper`; contadores `actions=1160..1202, committed=652..778, invariantChecks=1201` por seed; `stranded=0` para ambos denoms en los 5 seeds (`results/10-gotest.log`, `results/11-gotest.log`). El paquete `x/dex/keeper` completo (suite heredada + mi fuzz) pasó en `18.379s` (`results/10`).
-3. Iteraciones del PoC (documentan el proceso de descarte de falsos positivos): runs `43134032164` (`results/3`), `43135246600` (`results/4`), `43136379466` (`results/5`), `43137379899` (`results/6`), `43138284574` (`results/7`), `43139238026` (`results/8`), `43140114409` (`results/9`). En `results/3` la **única** señal real fue "0 drift de suministro" (no se infló nada pese a 240 acciones con 4 actores).
-4. Lectura estática adicional: `diff -r x/coinfactory x/tokenfactory`, `diff -rq wasmd-upstream clones/wasmd`, grep de `MintCoins|BurnCoins|SetBalance` en `x/dex`, grep de `DeriveIntermediateSender|SenderPrefix` en todo el repo (para probar que no hay ruta de recuperación de la cuenta pin).
+3. **Ejecución de la suite del propio repo para el hook de IBC (refutación ejecutada de V1)** — run `43144428175`:
+   ```
+   VERSION=test go test -mod=mod -tags 'ledger test_ledger_mock' -v -run 'TestIBCHooksTestSuite' ./x/ibc-hooks/
+   ```
+   Resultado (`results/12-gotest.log`): `--- PASS: TestIBCHooksTestSuite (2.72s)` con sus 5 casos, incluido `TestFundsAreReturnedOnFailedContractExec` (ejecuta un `echo.wasm` real contra un memo cuyo msg el contrato rechaza y comprueba que **el contrato no recibe fondos** ante ack de error) y `TestFundsAreTransferredToTheContract` (caso de éxito). Qué prueba y qué no: el test ejecuta el escenario de fallo del hook y confirma que no hay pago al contrato; la ausencia de fondos embalsados en la cuenta pin la establishce la lectura de `msg_server.go:463-472` arriba (el writeFn no se invoca con ack de error), no la aserción del test.
+4. Iteraciones del PoC (documentan el proceso de descarte de falsos positivos): runs `43134032164` (`results/3`), `43135246600` (`results/4`), `43136379466` (`results/5`), `43137379899` (`results/6`), `43138284574` (`results/7`), `43139238026` (`results/8`), `43140114409` (`results/9`). En `results/3` la **única** señal real fue "0 drift de suministro" (no se infló nada pese a 240 acciones con 4 actores).
+5. Lectura estática adicional: `diff -r x/coinfactory x/tokenfactory`, `diff -rq wasmd-upstream clones/wasmd`, grep de `MintCoins|BurnCoins|SetBalance` en `x/dex`, grep de `DeriveIntermediateSender|SenderPrefix` en todo el repo (para probar que no hay ruta de recuperación de la cuenta pin).
 
 ### 6.4 Bloqueados / no cubiertos (no afirmo cobertura total)
 
