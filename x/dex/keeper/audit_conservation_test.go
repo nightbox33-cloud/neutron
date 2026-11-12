@@ -251,6 +251,54 @@ func (s *ConservationSuite) holders(denom string) map[string]math.Int {
 	return out
 }
 
+// allBalances snapshots every (address, denom) balance in the whole bank.
+func (s *ConservationSuite) allBalances() map[string]math.Int {
+	out := make(map[string]math.Int)
+	s.App.BankKeeper.IterateAllBalances(s.Ctx, func(addr sdk.AccAddress, coin sdk.Coin) bool {
+		out[fmt.Sprintf("%s|%s", addr.String(), coin.Denom)] = coin.Amount
+		return false
+	})
+	return out
+}
+
+// diffAll prints every (address, denom) pair whose balance changed.
+func (s *ConservationSuite) diffAll(before, after map[string]math.Int) string {
+	var sb strings.Builder
+	keys := make(map[string]bool, len(before)+len(after))
+	for k := range before {
+		keys[k] = true
+	}
+	for k := range after {
+		keys[k] = true
+	}
+	n := 0
+	for k := range keys {
+		b := before[k]
+		a := after[k]
+		if !b.Equal(a) {
+			fmt.Fprintf(&sb, "  %s: %s -> %s (delta %s)\n", k, b, a, a.Sub(b))
+			n++
+			if n > 40 {
+				fmt.Fprintf(&sb, "  ...truncated\n")
+				break
+			}
+		}
+	}
+	return sb.String()
+}
+
+// supplyTotal sums the bank supply over every denom in the bank.
+func (s *ConservationSuite) supplyTable() string {
+	var sb strings.Builder
+	total := sdk.Coins{}
+	s.App.BankKeeper.IterateTotalSupply(s.Ctx, func(coin sdk.Coin) bool {
+		total = total.Add(coin)
+		fmt.Fprintf(&sb, "  supply %s = %s\n", coin.Denom, coin.Amount)
+		return false
+	})
+	return sb.String()
+}
+
 // chainTotal sums every balance in the bank for a denom.
 func (s *ConservationSuite) chainTotal(denom string) math.Int {
 	total := math.ZeroInt()
@@ -335,12 +383,14 @@ func (s *ConservationSuite) TestDEXValueConservation() {
 			}
 			beforeA := s.holders("TokenA")
 			beforeB := s.holders("TokenB")
+			beforeAll := s.allBalances()
 			beforeTotA, beforeTotB := s.chainTotal("TokenA"), s.chainTotal("TokenB")
 			act := s.oneAction(a)
 			totA, totB := s.chainTotal("TokenA"), s.chainTotal("TokenB")
 			if !totA.Equal(beforeTotA) || !totB.Equal(beforeTotB) {
-				s.T().Logf("VALUE LEAK by %s doing %s at round %d: chainBalanceA %s->%s chainBalanceB %s->%s\nA diff:\n%sB diff:\n%s",
+				s.T().Logf("VALUE LEAK by %s doing %s at round %d: chainBalanceA %s->%s chainBalanceB %s->%s\nFULL BANK DIFF:\n%sSUPPLY:\n%sA diff:\n%sB diff:\n%s",
 					a, act, r, beforeTotA, totA, beforeTotB, totB,
+					s.diffAll(beforeAll, s.allBalances()), s.supplyTable(),
 					s.diffHolders("TokenA", beforeA, s.holders("TokenA")),
 					s.diffHolders("TokenB", beforeB, s.holders("TokenB")))
 				s.T().FailNow()
