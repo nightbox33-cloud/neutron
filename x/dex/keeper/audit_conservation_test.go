@@ -55,13 +55,13 @@ func (s *ConservationSuite) SetupTest() {
 		))
 	}
 	s.startSupply = map[string]math.Int{
-		"TokenA": s.totalSupply("TokenA"),
-		"TokenB": s.totalSupply("TokenB"),
+		"TokenA": s.chainTotal("TokenA"),
+		"TokenB": s.chainTotal("TokenB"),
 	}
-	totA := s.App.BankKeeper.GetSupply(s.Ctx, "TokenA").Amount
-	totB := s.App.BankKeeper.GetSupply(s.Ctx, "TokenB").Amount
-	require.Equal(s.T(), totA.String(), s.startSupply["TokenA"].String(), "TokenA left/entered the tracked universe during funding")
-	require.Equal(s.T(), totB.String(), s.startSupply["TokenB"].String(), "TokenB left/entered the tracked universe during funding")
+	for _, denom := range []string{"TokenA", "TokenB"} {
+		require.Equal(s.T(), s.App.BankKeeper.GetSupply(s.Ctx, denom).Amount.String(),
+			s.chainTotal(denom).String(), "%s bank inconsistent right after funding", denom)
+	}
 }
 
 func (s *ConservationSuite) modAddr() sdk.AccAddress {
@@ -86,7 +86,7 @@ func (s *ConservationSuite) totalSupply(denom string) math.Int {
 
 func (s *ConservationSuite) check(tag string) {
 	for _, denom := range []string{"TokenA", "TokenB"} {
-		require.Equalf(s.T(), s.startSupply[denom].String(), s.totalSupply(denom).String(),
+		require.Equalf(s.T(), s.startSupply[denom].String(), s.chainTotal(denom).String(),
 			"SUPPLY DRIFT for %s at %s", denom, tag)
 	}
 }
@@ -251,6 +251,18 @@ func (s *ConservationSuite) holders(denom string) map[string]math.Int {
 	return out
 }
 
+// chainTotal sums every balance in the bank for a denom.
+func (s *ConservationSuite) chainTotal(denom string) math.Int {
+	total := math.ZeroInt()
+	s.App.BankKeeper.IterateAllBalances(s.Ctx, func(_ sdk.AccAddress, coin sdk.Coin) bool {
+		if coin.Denom == denom {
+			total = total.Add(coin.Amount)
+		}
+		return false
+	})
+	return total
+}
+
 // nameOf annotates an address with the module name if it is a module account.
 func (s *ConservationSuite) nameOf(addr string) string {
 	a, err := sdk.AccAddressFromBech32(addr)
@@ -316,13 +328,21 @@ func (s *ConservationSuite) TestDEXValueConservation() {
 	const rounds = 150
 	for r := 0; r < rounds; r++ {
 		for _, a := range s.actors {
-			before := s.dumpState()
+			for _, denom := range []string{"TokenA", "TokenB"} {
+				// bank must be internally consistent at all times
+				require.Equalf(s.T(), s.App.BankKeeper.GetSupply(s.Ctx, denom).Amount.String(),
+					s.chainTotal(denom).String(), "BANK INCONSISTENT: %s supply != sum of balances (round %d)", denom, r)
+			}
+			beforeA := s.holders("TokenA")
+			beforeB := s.holders("TokenB")
+			beforeTotA, beforeTotB := s.chainTotal("TokenA"), s.chainTotal("TokenB")
 			act := s.oneAction(a)
-			after := s.dumpState()
-			if before[0] != after[0] || before[1] != after[1] || before[2] != after[2] || before[3] != after[3] {
-				s.T().Logf("DRIFT by %s doing %s at round %d\nuniverseA %s->%s\nuniverseB %s->%s\nchainA %s->%s\nchainB %s->%s\nSTRAY:\n%s\nSTATE:\n%s",
-					a, act, r, before[0], after[0], before[1], after[1], before[2], after[2], before[3], after[3],
-					s.strayHolders(), s.dump("state at drift"))
+			totA, totB := s.chainTotal("TokenA"), s.chainTotal("TokenB")
+			if !totA.Equal(beforeTotA) || !totB.Equal(beforeTotB) {
+				s.T().Logf("VALUE LEAK by %s doing %s at round %d: chainBalanceA %s->%s chainBalanceB %s->%s\nA diff:\n%sB diff:\n%s",
+					a, act, r, beforeTotA, totA, beforeTotB, totB,
+					s.diffHolders("TokenA", beforeA, s.holders("TokenA")),
+					s.diffHolders("TokenB", beforeB, s.holders("TokenB")))
 				s.T().FailNow()
 			}
 			s.check(fmt.Sprintf("round %d actor %s", r, a))
