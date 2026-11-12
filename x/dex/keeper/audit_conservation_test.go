@@ -20,6 +20,8 @@ package keeper_test
 import (
 	"fmt"
 	"math/rand" //nolint:gosec // deterministic fuzz driver for invariants
+	"os"
+	"strconv"
 	"strings"
 	"testing"
 
@@ -42,6 +44,19 @@ type ConservationSuite struct {
 	actors      []sdk.AccAddress
 	startSupply map[string]math.Int
 	rng         *rand.Rand
+
+	actions    int
+	committed  int
+	checks     int
+}
+
+func auditSeed() int64 {
+	if v := os.Getenv("AUDIT_SEED"); v != "" {
+		if n, err := strconv.ParseInt(v, 10, 64); err == nil {
+			return n
+		}
+	}
+	return 1337
 }
 
 func TestDEXValueConservationFuzz(t *testing.T) {
@@ -51,7 +66,8 @@ func TestDEXValueConservationFuzz(t *testing.T) {
 func (s *ConservationSuite) SetupTest() {
 	s.Setup()
 	s.ms = dexkeeper.NewMsgServerImpl(s.App.DexKeeper)
-	s.rng = rand.New(rand.NewSource(1337)) //nolint:gosec
+	s.rng = rand.New(rand.NewSource(auditSeed())) //nolint:gosec
+	s.actions, s.committed, s.checks = 0, 0, 0
 	s.actors = nil
 	for i := 0; i < 8; i++ {
 		addr := s.SetupAddr(i)
@@ -80,9 +96,11 @@ func (s *ConservationSuite) runTx(f func() error) bool {
 	s.Ctx = cacheCtx
 	err := f()
 	s.Ctx = parent
+	s.actions++
 	if err != nil {
 		return false
 	}
+	s.committed++
 	write()
 	return true
 }
@@ -174,6 +192,7 @@ func (s *ConservationSuite) supplyTable() string {
 }
 
 func (s *ConservationSuite) check(tag string) {
+	s.checks++
 	for _, denom := range []string{"TokenA", "TokenB"} {
 		require.Equalf(s.T(), s.startSupply[denom].String(), s.chainTotal(denom).String(),
 			"VALUE CREATED/DESTROYED for %s at %s", denom, tag)
@@ -452,6 +471,7 @@ func (s *ConservationSuite) TestDEXValueConservation() {
 			"STRANDED VALUE in dex module for %s: %s > dust bound %s", denom, stranded, limit)
 	}
 	s.check("final")
+	s.T().Logf("AUDIT SUMMARY seed=%d actions=%d committed=%d invariantChecks=%d", auditSeed(), s.actions, s.committed, s.checks)
 
 	for _, a := range s.actors {
 		s.T().Logf("FINAL %s: A=%s B=%s", a, s.supply("TokenA", a), s.supply("TokenB", a))

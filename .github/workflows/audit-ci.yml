@@ -31,6 +31,13 @@ jobs:
         run: |
           PKGS="${{ github.event.inputs.packages || './x/dex/... ./utils/... ./x/ibc-rate-limit/... ./x/contractmanager/... ./x/feerefunder/... ./x/tokenfactory/... ./x/coinfactory/... ./x/interchainqueries/... ./x/interchaintxs/... ./x/transfer/... ./x/globalfee/... ./x/cron/... ./x/state-verifier/...' }}"
           VERSION=test go test -mod=mod -tags 'ledger test_ledger_mock' -timeout 50m $PKGS > gotest.log 2>&1 || true
+      - name: Audit PoC multi-seed evidence
+        run: |
+          for SEED in 1337 90210 424242 7 20261112; do
+            echo "===== AUDIT POC seed=$SEED =====" >> gotest.log
+            AUDIT_SEED=$SEED VERSION=test go test -mod=mod -tags 'ledger test_ledger_mock' -timeout 30m -v \
+              -run 'TestDEXValueConservationFuzz' ./x/dex/keeper/ >> gotest.log 2>&1 || true
+          done
       - name: Push results
         run: |
           git config user.name "audit-bot"
