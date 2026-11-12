@@ -230,8 +230,13 @@ func (s *ConservationSuite) drainOrders(a sdk.AccAddress, strict bool) {
 	}
 }
 
-func (s *ConservationSuite) dumpState() [2]string {
-	return [2]string{s.totalSupply("TokenA").String(), s.totalSupply("TokenB").String()}
+func (s *ConservationSuite) dumpState() [4]string {
+	return [4]string{
+		s.totalSupply("TokenA").String(),
+		s.totalSupply("TokenB").String(),
+		s.App.BankKeeper.GetSupply(s.Ctx, "TokenA").Amount.String(),
+		s.App.BankKeeper.GetSupply(s.Ctx, "TokenB").Amount.String(),
+	}
 }
 
 func (s *ConservationSuite) dump(tag string) string {
@@ -247,12 +252,15 @@ func (s *ConservationSuite) TestDEXValueConservation() {
 	const rounds = 150
 	for r := 0; r < rounds; r++ {
 		for _, a := range s.actors {
+			beforeDump := s.dump(fmt.Sprintf("BEFORE r%d %s", r, "action"))
 			before := s.dumpState()
 			act := s.oneAction(a)
 			after := s.dumpState()
-			if before[0] != after[0] || before[1] != after[1] {
-				s.T().Logf("DRIFT by %s doing %s\nBEFORE:\n%sAFTER:\n%s",
-					a, act, s.dump(fmt.Sprintf("before %s r%d", act, r)), s.dump(fmt.Sprintf("after %s r%d", act, r)))
+			if before[0] != after[0] || before[1] != after[1] || before[2] != after[2] || before[3] != after[3] {
+				afterDump := s.dump(fmt.Sprintf("AFTER r%d", r))
+				s.T().Logf("DRIFT by %s doing %s\nuniverseA %s->%s\nuniverseB %s->%s\nchainA %s->%s\nchainB %s->%s\nBEFORE:\n%s\nAFTER:\n%s",
+					a, act, before[0], after[0], before[1], after[1], before[2], after[2], before[3], after[3],
+					beforeDump, afterDump)
 				s.T().FailNow()
 			}
 			s.check(fmt.Sprintf("round %d actor %s", r, a))
