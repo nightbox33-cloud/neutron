@@ -1,0 +1,49 @@
+name: Audit CI
+on:
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: 'go test package pattern'
+        required: false
+        default: './x/... ./utils/... ./wasmbinding/...'
+  push:
+    branches:
+      - 'arena/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  go-test:
+    name: go test
+    runs-on: ubicloud-standard-4
+    timeout-minutes: 60
+    steps:
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ~1.24
+      - uses: actions/checkout@v4
+      - name: Test
+        run: |
+          PKGS="${{ github.event.inputs.packages || './x/... ./utils/... ./wasmbinding/...' }}"
+          VERSION=test go test -mod=mod -tags 'ledger test_ledger_mock' -timeout 50m $PKGS > gotest.log 2>&1 || true
+      - name: Push results
+        run: |
+          git config user.name "audit-bot"
+          git config user.email "audit-bot@users.noreply.github.com"
+          git fetch origin audit-results || true
+          if git ls-remote --exit-code origin audit-results >/dev/null 2>&1; then
+            git checkout -B audit-results origin/audit-results
+          else
+            git checkout --orphan audit-results
+            git rm -rf --cached . >/dev/null 2>&1 || true
+          fi
+          mkdir -p results
+          mv gotest.log results/${{ github.run_number }}-gotest.log
+          git add results
+          git commit -m "results run ${{ github.run_number }}"
+          git push -f origin audit-results
