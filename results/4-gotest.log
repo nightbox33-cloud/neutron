@@ -1,0 +1,301 @@
+go: downloading cosmossdk.io/math v1.5.3
+go: downloading github.com/neutron-org/cosmos-sdk v0.53.4-neutron
+go: downloading cosmossdk.io/errors v1.1.0
+go: downloading cosmossdk.io/store v1.1.2
+go: downloading github.com/stretchr/testify v1.11.1
+go: downloading cosmossdk.io/core v0.11.3
+go: downloading github.com/cometbft/cometbft v0.38.21
+go: downloading github.com/gorilla/mux v1.8.1
+go: downloading github.com/grpc-ecosystem/grpc-gateway v1.16.0
+go: downloading github.com/spf13/cobra v1.10.2
+go: downloading github.com/cosmos/gogoproto v1.7.2
+go: downloading gopkg.in/yaml.v2 v2.4.0
+go: downloading golang.org/x/exp v0.0.0-20250305212735-054e65f0b394
+go: downloading github.com/spf13/cast v1.10.0
+go: downloading github.com/spf13/pflag v1.0.10
+go: downloading github.com/cosmos/ibc-go/v10 v10.5.0
+go: downloading github.com/cosmos/ics23/go v0.11.0
+go: downloading google.golang.org/grpc v1.79.3
+go: downloading github.com/neutron-org/wasmd v0.61.14-neutron
+go: downloading cosmossdk.io/log v1.6.1
+go: downloading github.com/golang/mock v1.6.0
+go: downloading github.com/cosmos/cosmos-proto v1.0.0-beta.5
+go: downloading github.com/golang/protobuf v1.5.4
+go: downloading google.golang.org/genproto/googleapis/api v0.0.0-20251222181119-0a764e51fe1b
+go: downloading google.golang.org/protobuf v1.36.11
+go: downloading github.com/CosmWasm/wasmvm/v3 v3.0.7
+go: downloading github.com/pkg/errors v0.9.1
+go: downloading google.golang.org/genproto v0.0.0-20250603155806-513f23925822
+go: downloading github.com/regen-network/protobuf v1.3.3-alpha.regen.1
+go: downloading github.com/cosmos/cosmos-db v1.1.3
+go: downloading cosmossdk.io/x/tx v0.14.0
+go: downloading github.com/hashicorp/go-metrics v0.5.4
+go: downloading cosmossdk.io/collections v1.4.0
+go: downloading github.com/hashicorp/golang-lru v1.0.2
+go: downloading sigs.k8s.io/yaml v1.6.0
+go: downloading github.com/tendermint/go-amino v0.16.0
+go: downloading github.com/cockroachdb/errors v1.12.0
+go: downloading github.com/grpc-ecosystem/go-grpc-middleware v1.4.0
+go: downloading cosmossdk.io/api v0.9.2
+go: downloading github.com/spf13/viper v1.21.0
+go: downloading cosmossdk.io/depinject v1.2.1
+go: downloading github.com/google/go-cmp v0.7.0
+go: downloading github.com/cosmos/go-bip39 v1.0.0
+go: downloading github.com/oasisprotocol/curve25519-voi v0.0.0-20230904125328-1f23a7beb09a
+go: downloading golang.org/x/crypto v0.46.0
+go: downloading google.golang.org/genproto/googleapis/rpc v0.0.0-20260114163908-3f89685c29c3
+go: downloading cosmossdk.io/x/evidence v0.2.0
+go: downloading cosmossdk.io/x/feegrant v0.2.0
+go: downloading cosmossdk.io/x/upgrade v0.2.0
+go: downloading github.com/google/gofuzz v1.2.0
+go: downloading github.com/prometheus/client_golang v1.23.2
+go: downloading github.com/distribution/reference v0.5.0
+go: downloading github.com/ethereum/go-ethereum v1.17.0
+go: downloading golang.org/x/net v0.48.0
+go: downloading github.com/bytedance/sonic v1.15.0
+go: downloading github.com/rs/zerolog v1.34.0
+go: downloading github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
+go: downloading github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2
+go: downloading github.com/hdevalence/ed25519consensus v0.2.0
+go: downloading cosmossdk.io/client/v2 v2.0.0-beta.7
+go: downloading github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v10 v10.1.0
+go: downloading github.com/skip-mev/block-sdk/v2 v2.1.5
+go: downloading github.com/neutron-org/feemarket v1.2.0
+go: downloading github.com/neutron-org/connect v1.3.1
+go: downloading github.com/prometheus/common v0.67.5
+go: downloading github.com/cockroachdb/pebble v1.1.5
+go: downloading github.com/google/btree v1.1.3
+go: downloading github.com/syndtr/goleveldb v1.0.1-0.20210819022825-2ae1ddf74ef7
+go: downloading gotest.tools/v3 v3.5.2
+go: downloading pgregory.net/rapid v1.2.0
+go: downloading golang.org/x/sync v0.19.0
+go: downloading github.com/hashicorp/go-immutable-radix v1.3.1
+go: downloading github.com/decred/dcrd/dcrec/secp256k1/v4 v4.4.0
+go: downloading go.uber.org/mock v0.6.0
+go: downloading github.com/shamaton/msgpack/v2 v2.2.3
+go: downloading github.com/cosmos/btcutil v1.0.5
+go: downloading go.yaml.in/yaml/v2 v2.4.3
+go: downloading cosmossdk.io/schema v1.1.0
+go: downloading github.com/tidwall/btree v1.8.1
+go: downloading github.com/iancoleman/strcase v0.3.0
+go: downloading github.com/cosmos/iavl v1.2.0
+go: downloading github.com/hashicorp/go-hclog v1.6.3
+go: downloading github.com/hashicorp/go-plugin v1.6.3
+go: downloading github.com/huandu/skiplist v1.2.1
+go: downloading github.com/cockroachdb/logtags v0.0.0-20241215232642-bb51bb14a506
+go: downloading github.com/cockroachdb/redact v1.1.6
+go: downloading github.com/getsentry/sentry-go v0.42.0
+go: downloading github.com/go-kit/kit v0.13.0
+go: downloading github.com/cosmos/keyring v1.2.0
+go: downloading github.com/go-viper/mapstructure/v2 v2.4.0
+go: downloading github.com/fsnotify/fsnotify v1.9.0
+go: downloading github.com/sagikazarmark/locafero v0.11.0
+go: downloading github.com/spf13/afero v1.15.0
+go: downloading github.com/bgentry/speakeasy v0.2.0
+go: downloading github.com/mattn/go-isatty v0.0.20
+go: downloading golang.org/x/sys v0.41.0
+go: downloading github.com/opencontainers/go-digest v1.0.0
+go: downloading github.com/beorn7/perks v1.0.1
+go: downloading github.com/cespare/xxhash/v2 v2.3.0
+go: downloading github.com/prometheus/client_model v0.6.2
+go: downloading github.com/prometheus/procfs v0.12.0
+go: downloading github.com/mattn/go-colorable v0.1.14
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading filippo.io/edwards25519 v1.1.1
+go: downloading github.com/cosmos/gogogateway v1.2.0
+go: downloading github.com/gorilla/handlers v1.5.2
+go: downloading github.com/improbable-eng/grpc-web v0.15.0
+go: downloading github.com/bits-and-blooms/bitset v1.24.3
+go: downloading github.com/klauspost/compress v1.18.4
+go: downloading github.com/cosmos/interchain-security/v7 v7.0.1
+go: downloading github.com/go-kit/log v0.2.1
+go: downloading github.com/go-logfmt/logfmt v0.6.0
+go: downloading github.com/DataDog/datadog-go v4.8.3+incompatible
+go: downloading github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822
+go: downloading github.com/cockroachdb/fifo v0.0.0-20240616162244-4768e80dfb9a
+go: downloading github.com/cockroachdb/tokenbucket v0.0.0-20230807174530-cc333fc44b06
+go: downloading github.com/iancoleman/orderedmap v0.3.0
+go: downloading github.com/fatih/color v1.18.0
+go: downloading github.com/kr/pretty v0.3.1
+go: downloading github.com/hashicorp/yamux v0.1.2
+go: downloading github.com/oklog/run v1.1.0
+go: downloading github.com/cometbft/cometbft-db v0.15.0
+go: downloading github.com/emicklei/dot v1.6.2
+go: downloading github.com/gorilla/websocket v1.5.3
+go: downloading github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475
+go: downloading github.com/sourcegraph/conc v0.3.1-0.20240121214520-5f936abd7ae8
+go: downloading github.com/subosito/gotenv v1.6.0
+go: downloading github.com/pelletier/go-toml/v2 v2.2.4
+go: downloading go.yaml.in/yaml/v3 v3.0.4
+go: downloading golang.org/x/text v0.34.0
+go: downloading github.com/dvsekhvalnov/jose2go v1.7.0
+go: downloading github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2
+go: downloading github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c
+go: downloading github.com/mtibben/percent v0.2.1
+go: downloading golang.org/x/term v0.38.0
+go: downloading github.com/manifoldco/promptui v0.9.0
+go: downloading github.com/lib/pq v1.10.9
+go: downloading github.com/rs/cors v1.11.1
+go: downloading github.com/bytedance/gopkg v0.1.3
+go: downloading github.com/cloudwego/base64x v0.1.6
+go: downloading golang.org/x/arch v0.17.0
+go: downloading github.com/gogo/googleapis v1.4.1
+go: downloading github.com/felixge/httpsnoop v1.0.4
+go: downloading github.com/cenkalti/backoff/v4 v4.3.0
+go: downloading github.com/desertbit/timer v1.0.1
+go: downloading nhooyr.io/websocket v1.8.17
+go: downloading github.com/holiman/uint256 v1.3.2
+go: downloading github.com/DataDog/zstd v1.5.7
+go: downloading github.com/golang/snappy v1.0.0
+go: downloading github.com/hashicorp/golang-lru/v2 v2.0.7
+go: downloading github.com/kr/text v0.2.0
+go: downloading github.com/rogpeppe/go-internal v1.14.1
+go: downloading github.com/hashicorp/go-cleanhttp v0.5.2
+go: downloading github.com/hashicorp/go-getter v1.7.9
+go: downloading github.com/chzyer/readline v1.5.1
+go: downloading github.com/cockroachdb/apd/v2 v2.0.2
+go: downloading github.com/minio/highwayhash v1.0.3
+go: downloading github.com/google/orderedcode v0.0.1
+go: downloading github.com/klauspost/cpuid/v2 v2.2.10
+go: downloading github.com/bytedance/sonic/loader v0.5.0
+go: downloading github.com/twitchyliquid64/golang-asm v0.15.1
+go: downloading cloud.google.com/go/storage v1.50.0
+go: downloading github.com/aws/aws-sdk-go v1.49.0
+go: downloading cloud.google.com/go v0.120.0
+go: downloading github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d
+go: downloading github.com/hashicorp/go-safetemp v1.0.0
+go: downloading github.com/mitchellh/go-homedir v1.1.0
+go: downloading github.com/hashicorp/go-version v1.7.0
+go: downloading github.com/ulikunitz/xz v0.5.14
+go: downloading golang.org/x/oauth2 v0.34.0
+go: downloading google.golang.org/api v0.247.0
+go: downloading cloud.google.com/go/compute/metadata v0.9.0
+go: downloading cloud.google.com/go/iam v1.5.2
+go: downloading github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric v0.50.0
+go: downloading github.com/google/uuid v1.6.0
+go: downloading github.com/googleapis/gax-go/v2 v2.15.0
+go: downloading go.opentelemetry.io/contrib/detectors/gcp v1.39.0
+go: downloading go.opentelemetry.io/otel v1.40.0
+go: downloading go.opentelemetry.io/otel/sdk/metric v1.40.0
+go: downloading go.opentelemetry.io/otel/sdk v1.40.0
+go: downloading go.opentelemetry.io/otel/trace v1.40.0
+go: downloading cloud.google.com/go/monitoring v1.24.2
+go: downloading github.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping v0.50.0
+go: downloading github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp v1.30.0
+go: downloading go.opentelemetry.io/otel/metric v1.40.0
+go: downloading cloud.google.com/go/auth v0.16.4
+go: downloading cloud.google.com/go/auth/oauth2adapt v0.2.8
+go: downloading go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.62.0
+go: downloading github.com/jmespath/go-jmespath v0.4.0
+go: downloading github.com/go-logr/logr v1.4.3
+go: downloading go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.61.0
+go: downloading golang.org/x/time v0.12.0
+go: downloading github.com/go-logr/stdr v1.2.2
+go: downloading go.opentelemetry.io/auto/sdk v1.2.1
+go: downloading github.com/google/s2a-go v0.1.9
+go: downloading github.com/googleapis/enterprise-certificate-proxy v0.3.6
+go: downloading github.com/envoyproxy/go-control-plane/envoy v1.36.0
+go: downloading github.com/spiffe/go-spiffe/v2 v2.6.0
+go: downloading github.com/cncf/xds/go v0.0.0-20251210132809-ee656c7534f5
+go: downloading github.com/go-jose/go-jose/v4 v4.1.3
+go: downloading github.com/envoyproxy/protoc-gen-validate v1.3.0
+go: downloading cel.dev/expr v0.25.1
+ok  	github.com/neutron-org/neutron/v11/x/dex	0.540s
+ok  	github.com/neutron-org/neutron/v11/x/dex/client/cli	0.599s [no tests to run]
+--- FAIL: TestDEXValueConservationFuzz (0.14s)
+    --- FAIL: TestDEXValueConservationFuzz/TestDEXValueConservation (0.14s)
+        audit_conservation_test.go:85: 
+            	Error Trace:	/home/runner/work/neutron/neutron/x/dex/keeper/audit_conservation_test.go:85
+            	            				/home/runner/work/neutron/neutron/x/dex/keeper/audit_conservation_test.go:226
+            	Error:      	Not equal: 
+            	            	expected: "8000000000000"
+            	            	actual  : "6631919906935"
+            	            	
+            	            	Diff:
+            	            	--- Expected
+            	            	+++ Actual
+            	            	@@ -1 +1 @@
+            	            	-8000000000000
+            	            	+6631919906935
+            	Test:       	TestDEXValueConservationFuzz/TestDEXValueConservation
+            	Messages:   	SUPPLY DRIFT for TokenA at round 15 actor neutron1v9jxgujqxpenr8cvjdpzqgpqyqszqgp5q8a2gv
+FAIL
+FAIL	github.com/neutron-org/neutron/v11/x/dex/keeper	18.445s
+?   	github.com/neutron-org/neutron/v11/x/dex/keeper/internal/testutils	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/dex/migrations/v3	1.506s
+ok  	github.com/neutron-org/neutron/v11/x/dex/migrations/v4	0.910s
+ok  	github.com/neutron-org/neutron/v11/x/dex/migrations/v5	0.876s
+ok  	github.com/neutron-org/neutron/v11/x/dex/migrations/v6	1.093s
+ok  	github.com/neutron-org/neutron/v11/x/dex/migrations/v7	0.918s
+?   	github.com/neutron-org/neutron/v11/x/dex/migrations/v8	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/dex/simulation	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/dex/types	1.819s
+?   	github.com/neutron-org/neutron/v11/x/dex/types/v2	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/dex/utils	0.036s
+ok  	github.com/neutron-org/neutron/v11/utils	0.744s
+ok  	github.com/neutron-org/neutron/v11/utils/dcli	0.588s
+ok  	github.com/neutron-org/neutron/v11/utils/math	0.003s
+?   	github.com/neutron-org/neutron/v11/utils/stateverification	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/ibc-rate-limit	17.163s
+?   	github.com/neutron-org/neutron/v11/x/ibc-rate-limit/client/cli	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/ibc-rate-limit/keeper	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/ibc-rate-limit/simulation	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/ibc-rate-limit/types	0.082s
+ok  	github.com/neutron-org/neutron/v11/x/contractmanager	0.131s
+ok  	github.com/neutron-org/neutron/v11/x/contractmanager/client/cli	7.688s
+ok  	github.com/neutron-org/neutron/v11/x/contractmanager/keeper	0.970s
+ok  	github.com/neutron-org/neutron/v11/x/contractmanager/migrations/v2	1.096s
+ok  	github.com/neutron-org/neutron/v11/x/contractmanager/types	0.055s
+?   	github.com/neutron-org/neutron/v11/x/contractmanager/types/v1	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/feerefunder	0.065s
+ok  	github.com/neutron-org/neutron/v11/x/feerefunder/client/cli	5.382s
+ok  	github.com/neutron-org/neutron/v11/x/feerefunder/keeper	1.059s
+ok  	github.com/neutron-org/neutron/v11/x/feerefunder/migrations/v2	1.936s
+ok  	github.com/neutron-org/neutron/v11/x/feerefunder/types	0.088s
+?   	github.com/neutron-org/neutron/v11/x/tokenfactory	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/tokenfactory/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/tokenfactory/keeper	33.069s
+ok  	github.com/neutron-org/neutron/v11/x/tokenfactory/migrations/v2	2.050s
+ok  	github.com/neutron-org/neutron/v11/x/tokenfactory/types	0.089s
+?   	github.com/neutron-org/neutron/v11/x/tokenfactory/types/v1beta1	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/coinfactory	[no test files]
+?   	github.com/neutron-org/neutron/v11/x/coinfactory/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/coinfactory/keeper	33.295s
+ok  	github.com/neutron-org/neutron/v11/x/coinfactory/types	0.137s
+?   	github.com/neutron-org/neutron/v11/x/coinfactory/types/v1beta1	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/interchainqueries	0.103s
+?   	github.com/neutron-org/neutron/v11/x/interchainqueries/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/interchainqueries/keeper	56.304s
+ok  	github.com/neutron-org/neutron/v11/x/interchainqueries/migrations/v3	1.753s
+?   	github.com/neutron-org/neutron/v11/x/interchainqueries/simulation	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/interchainqueries/types	0.078s
+ok  	github.com/neutron-org/neutron/v11/x/interchaintxs	0.093s
+?   	github.com/neutron-org/neutron/v11/x/interchaintxs/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/interchaintxs/keeper	1.351s
+?   	github.com/neutron-org/neutron/v11/x/interchaintxs/simulation	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/interchaintxs/types	0.133s
+ok  	github.com/neutron-org/neutron/v11/x/transfer	0.746s
+ok  	github.com/neutron-org/neutron/v11/x/transfer/keeper	3.067s
+?   	github.com/neutron-org/neutron/v11/x/transfer/types	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/globalfee	0.074s
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/ante	0.059s
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/ante/antetest	1.488s
+?   	github.com/neutron-org/neutron/v11/x/globalfee/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/keeper	0.163s
+?   	github.com/neutron-org/neutron/v11/x/globalfee/migrations/v2	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/migrations/v2/v2_test	0.143s
+?   	github.com/neutron-org/neutron/v11/x/globalfee/migrations/v3	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/migrations/v3/v3_test	0.078s
+ok  	github.com/neutron-org/neutron/v11/x/globalfee/types	0.082s
+ok  	github.com/neutron-org/neutron/v11/x/cron	0.161s
+ok  	github.com/neutron-org/neutron/v11/x/cron/client/cli	7.727s
+ok  	github.com/neutron-org/neutron/v11/x/cron/keeper	1.108s
+ok  	github.com/neutron-org/neutron/v11/x/cron/migrations/v2	0.978s
+?   	github.com/neutron-org/neutron/v11/x/cron/simulation	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/cron/types	0.060s
+?   	github.com/neutron-org/neutron/v11/x/cron/types/v1	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/state-verifier	0.735s
+?   	github.com/neutron-org/neutron/v11/x/state-verifier/client/cli	[no test files]
+ok  	github.com/neutron-org/neutron/v11/x/state-verifier/keeper	3.833s
+?   	github.com/neutron-org/neutron/v11/x/state-verifier/types	[no test files]
+FAIL
