@@ -58,6 +58,10 @@ func (s *ConservationSuite) SetupTest() {
 		"TokenA": s.totalSupply("TokenA"),
 		"TokenB": s.totalSupply("TokenB"),
 	}
+	totA := s.App.BankKeeper.GetSupply(s.Ctx, "TokenA").Amount
+	totB := s.App.BankKeeper.GetSupply(s.Ctx, "TokenB").Amount
+	require.Equal(s.T(), totA.String(), s.startSupply["TokenA"].String(), "TokenA left/entered the tracked universe during funding")
+	require.Equal(s.T(), totB.String(), s.startSupply["TokenB"].String(), "TokenB left/entered the tracked universe during funding")
 }
 
 func (s *ConservationSuite) modAddr() sdk.AccAddress {
@@ -105,7 +109,7 @@ func (s *ConservationSuite) requireNoInsolvency(err error, ctx string) {
 		"MODULE INSOLVENT for claim at %s: %s", ctx, err.Error())
 }
 
-func (s *ConservationSuite) oneAction(a sdk.AccAddress) {
+func (s *ConservationSuite) oneAction(a sdk.AccAddress) string {
 	switch s.rng.Intn(7) {
 	case 0: // multi-tick deposits (balanced and imbalanced)
 		_, err := s.ms.Deposit(s.Ctx, &types.MsgDeposit{
@@ -118,6 +122,7 @@ func (s *ConservationSuite) oneAction(a sdk.AccAddress) {
 			Options:         []*types.DepositOptions{{}, {}, {}},
 		})
 		_ = err
+		return "deposit"
 	case 1: // simple multi-hop swap both directions with random exit limits
 		tokenIn, tokenOut := "TokenA", "TokenB"
 		if s.rng.Intn(2) == 1 {
@@ -135,6 +140,7 @@ func (s *ConservationSuite) oneAction(a sdk.AccAddress) {
 			PickBestRoute:  s.rng.Intn(2) == 1,
 		})
 		_ = err
+		return "multihopswap"
 	case 2: // maker GTC order A->B at random tick
 		_, err := s.ms.PlaceLimitOrder(s.Ctx, &types.MsgPlaceLimitOrder{
 			Creator:          a.String(),
@@ -146,18 +152,20 @@ func (s *ConservationSuite) oneAction(a sdk.AccAddress) {
 			OrderType:        types.LimitOrderType_GOOD_TIL_CANCELLED,
 		})
 		_ = err
+		return "placeGTC_AtoB"
 	case 3: // maker GTC order B->A with random limit sell price
 		lsp := s.randDec()
 		_, err := s.ms.PlaceLimitOrder(s.Ctx, &types.MsgPlaceLimitOrder{
-			Creator:      a.String(),
-			Receiver:     a.String(),
-			TokenIn:      "TokenB",
-			TokenOut:     "TokenA",
-			AmountIn:     s.randAmt(),
-			OrderType:    types.LimitOrderType_GOOD_TIL_CANCELLED,
+			Creator:        a.String(),
+			Receiver:       a.String(),
+			TokenIn:        "TokenB",
+			TokenOut:       "TokenA",
+			AmountIn:       s.randAmt(),
+			OrderType:      types.LimitOrderType_GOOD_TIL_CANCELLED,
 			LimitSellPrice: &lsp,
 		})
 		_ = err
+		return "placeGTC_BtoA"
 	case 4: // taker FOK order
 		lsp := s.randDec()
 		_, err := s.ms.PlaceLimitOrder(s.Ctx, &types.MsgPlaceLimitOrder{
@@ -170,11 +178,15 @@ func (s *ConservationSuite) oneAction(a sdk.AccAddress) {
 			LimitSellPrice: &lsp,
 		})
 		_ = err
+		return "placeFOK_BtoA"
 	case 5: // withdraw everything from pools (tolerant, keeps book churning)
 		s.drainPools(a, false)
+		return "withdrawPools"
 	case 6: // claim filled limit orders / cancel unfilled
 		s.drainOrders(a, false)
+		return "claimOrders"
 	}
+	return "noop"
 }
 
 func (s *ConservationSuite) drainPools(a sdk.AccAddress, strict bool) {
@@ -218,11 +230,31 @@ func (s *ConservationSuite) drainOrders(a sdk.AccAddress, strict bool) {
 	}
 }
 
+func (s *ConservationSuite) dumpState() [2]string {
+	return [2]string{s.totalSupply("TokenA").String(), s.totalSupply("TokenB").String()}
+}
+
+func (s *ConservationSuite) dump(tag string) string {
+	var sb strings.Builder
+	fmt.Fprintf(&sb, "[%s] module A=%s B=%s\n", tag, s.modSupply("TokenA"), s.modSupply("TokenB"))
+	for _, a := range s.actors {
+		fmt.Fprintf(&sb, "  actor %s A=%s B=%s\n", a, s.supply("TokenA", a), s.supply("TokenB", a))
+	}
+	return sb.String()
+}
+
 func (s *ConservationSuite) TestDEXValueConservation() {
 	const rounds = 150
 	for r := 0; r < rounds; r++ {
 		for _, a := range s.actors {
-			s.oneAction(a)
+			before := s.dumpState()
+			act := s.oneAction(a)
+			after := s.dumpState()
+			if before[0] != after[0] || before[1] != after[1] {
+				s.T().Logf("DRIFT by %s doing %s\nBEFORE:\n%sAFTER:\n%s",
+					a, act, s.dump(fmt.Sprintf("before %s r%d", act, r)), s.dump(fmt.Sprintf("after %s r%d", act, r)))
+				s.T().FailNow()
+			}
 			s.check(fmt.Sprintf("round %d actor %s", r, a))
 		}
 	}
